@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2011 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+        
+<com.example.android.photoalbum.DeckLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:p="http://schemas.android.com/apk/res/com.example.android.photoalbum"
+
+    android:id="@+id/deck"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Card #1, Map -->
+    <FrameLayout
+        android:id="@+id/photo_location"
+
+        android:layout_width="426dip"
+        android:layout_height="match_parent"
+        android:background="#ff1a4b4a"
+        android:layout_gravity="right"
+        android:clickable="true"
+        android:visibility="invisible"
+         />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ff1a1a1a"
+        android:layout_gravity="center_vertical"
+        android:visibility="invisible"
+        >
+
+        <include
+            layout="@layout/order_info"
+            android:id="@+id/order_info"
+            android:layout_width="320dip"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|right"
+		 />
+
+    </FrameLayout>
+
+    <!-- Card #3, Album and photo -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Displays the photos -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+	        <FrameLayout
+	            android:id="@+id/stack"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent" />
+	        <include
+	            android:id="@+id/photo_info"
+	            layout="@layout/photo_info"
+	            android:layout_width="230sp"
+	            android:layout_height="200sp"
+	            android:layout_marginRight="0sp"
+	            android:layout_gravity="center_vertical|right"
+	            android:visibility="invisible"
+			 />
+		</FrameLayout>
+
+        <!-- Left panel containing the list of photos -->
+        <FrameLayout
+            android:id="@+id/panel"
+
+            android:layout_width="358dip"
+            android:layout_height="match_parent"
+            android:background="@drawable/panel_background">
+
+    
+		    <ImageView
+		        android:contentDescription="@string/desc" 
+		        android:src="@drawable/back"
+		        android:layout_height="50dp" android:layout_width="100dp"
+		        android:id="@+id/up"
+		        android:layout_marginTop="0dp"
+		        android:layout_gravity="top|left"
+		        android:layout_marginLeft="0dp"
+		        android:visibility="invisible"
+		        />		    
+
+			                    
+            <!-- List of photos -->
+            <ListView
+                android:id="@+id/album_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible" 
+                android:layout_marginTop="50dp"
+                />
+
+            <ListView
+                android:id="@+id/app_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+             />
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+</com.example.android.photoalbum.DeckLayout>

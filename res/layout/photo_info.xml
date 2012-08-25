@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/corner"
+    android:layout_gravity="center_vertical"
+    android:alpha="0.5"
+    >
+
+
+    <TextView
+        android:id="@+id/photo_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:textColor="@color/black_text"
+        android:textSize="36dip" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="0sp"
+        android:layout_marginTop="0sp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dip"
+            android:orientation="vertical">
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:textColor="@color/black_text"
+                android:textSize="18dip"
+                android:textStyle="bold"
+                android:text="@string/dish_price"
+                android:id="@+id/dish_price_text"
+                android:paddingBottom="5dip"
+                 />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:textColor="@color/black_text"
+                android:textSize="18dip"
+                android:textStyle="bold"
+                android:text="@string/dish_flavour"
+                android:id="@+id/dish_flavour_text"
+                android:paddingBottom="5dip"
+                 />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:textColor="@color/black_text"
+                android:textSize="18dip"
+                android:textStyle="bold"
+                android:text="@string/dish_serving"
+                android:id="@+id/dish_serving_text"
+                android:paddingBottom="5dip" 
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:textColor="@color/black_text"
+                android:textSize="18dip"
+                android:textStyle="bold"
+                android:text="@string/dish_ingredients"
+                android:id="@+id/dish_ingredients_text"
+                android:paddingBottom="5dip"
+                 />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="left"
+            android:layout_gravity="center_vertical"
+            >
+            
+            <TextView
+                android:id="@+id/dish_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_text"
+                android:textStyle="bold"
+                android:textSize="18dip"
+                android:paddingBottom="5dip"
+                 />
+
+            <TextView
+                android:id="@+id/dish_flavour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_text"
+                android:textStyle="bold"
+                android:textSize="18dip"
+                android:paddingBottom="5dip"
+                 />
+
+            <TextView
+                android:id="@+id/dish_serving"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_text"
+                android:textStyle="bold"
+                android:textSize="18dip" 
+                android:paddingBottom="5dip"
+                />
+
+            <TextView
+                android:id="@+id/dish_ingredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_text"
+                android:textStyle="bold"
+                android:textSize="18dip" 
+                android:paddingBottom="5dip"
+                />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
