@@ -23,15 +23,16 @@ import android.graphics.drawable.Drawable;
  * properties. It also stores the photo thumbnail to be displayed
  * in the album list.
  */
-class Dish {
-    String name;
-    String price;
-    String category;
-    String ingredients;
-    String flavour;
-    String servings;
+class Photo {
+    String title;
+    String duration;
+    String posted_by;
+    String posted_by_thumbnail;
+    String channel;
+    String description;
+    String views;
     String likes;
+    String date;
     String thumbnail;
-    String properties;
-    String tips;
+    int photoResource;
 }

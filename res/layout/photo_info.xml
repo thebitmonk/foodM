@@ -64,8 +64,8 @@
                 android:textColor="@color/black_text"
                 android:textSize="18dip"
                 android:textStyle="bold"
-                android:text="@string/dish_servings"
-                android:id="@+id/dish_servings_text"
+                android:text="@string/dish_serving"
+                android:id="@+id/dish_serving_text"
                 android:paddingBottom="5dip" 
                 />
 
@@ -113,7 +113,7 @@
                  />
 
             <TextView
-                android:id="@+id/dish_servings"
+                android:id="@+id/dish_serving"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black_text"
