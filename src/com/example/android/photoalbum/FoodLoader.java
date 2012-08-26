@@ -27,35 +27,34 @@ import java.util.List;
  * Loads the photos of an album. This implementation is very simple
  * and simply returns a static list of photos.
  */
-class AlbumLoader {
+class FoodLoader {
     private final Context mContext;
 
-    AlbumLoader(Context context) {
+    FoodLoader(Context context) {
         mContext = context;
     }
 
-    List<Photo> loadPhotos() {
-        ArrayList<Photo> photos = new ArrayList<Photo>();
-        addPhoto(photos, "Rs 450", "13 mins", "bitmonk", "tomato cheese", "1 for 2","123","111","sweet","http://farm7.staticflickr.com/6154/6144736141_ea63efa403_z.jpg");
-        addPhoto(photos, "Rs 500", "13 mins", "rebelvarun", "mushroom broccoli pepper", "1 for 3","123","111","spicy","http://farm4.staticflickr.com/3295/2968102780_7ca4f9bec7_z.jpg?zz=1");
-        addPhoto(photos, "Bitmonk", "13 mins", "bitmonk", "ubergeeks", "hacking world primer","123","111","Jan 1, 2012","http://www.project-humanity-earth.org/yahoo_site_admin/assets/images/city-2.226121338_std.jpg");
-        addPhoto(photos, "Bitmonk", "13 mins", "bitmonk", "ubergeeks", "hacking world primer","123","111","Jan 1, 2012","http://www.futuretechnology500.com/images/future-airplane.jpg");
-        return photos;
+    List<Dish> loadPhotos() {
+        ArrayList<Dish> dishes = new ArrayList<Dish>();
+        addDish(dishes, "Paneer Pasanda", "Rs 500", "main course","tomato cheese", "mild spicy", "1 for 3", "111","http://farm7.staticflickr.com/6154/6144736141_ea63efa403_z.jpg");
+        addDish(dishes, "Veg Hariyali", "Rs 250", "main course", "mushroom broccoli pepper", "normal", "1 for 3","123","http://farm4.staticflickr.com/3295/2968102780_7ca4f9bec7_z.jpg?zz=1");
+        addDish(dishes, "Crispy Corn", "Rs 300", "starters","mushroom broccoli pepper", "normal", "1 for 3","123","http://farm4.staticflickr.com/3295/2968102780_7ca4f9bec7_z.jpg?zz=1"); 
+        addDish(dishes, "Sweet Tomato Soup", "Rs 80", "starters", "tomato cheese", "mild spicy", "1 for 3", "111","http://farm7.staticflickr.com/6154/6144736141_ea63efa403_z.jpg");
+        return dishes;
     }
 
-    private void addPhoto(ArrayList<Photo> photos, String title, String duration, String posted_by,
-            String channel, String description, String views, String likes, String date, String thumbnail) {
-        Photo photo = new Photo();
-        photo.title = title;
-        photo.duration = duration;
-        photo.posted_by = posted_by;
-        photo.channel = channel;
-        photo.description = description;
-        photo.views = views;
-        photo.likes = likes;
-        photo.date = date;
-        photo.thumbnail = thumbnail;
-        photos.add(photo);
+    private void addDish(ArrayList<Dish> dishes, String name, String price, String category,
+            String ingredients, String flavour, String servings, String likes, String thumbnail) {
+        Dish dish = new Dish();
+        dish.name = name;
+        dish.price = price;
+        dish.category = category;
+        dish.ingredients = ingredients;
+        dish.flavour = flavour;
+        dish.servings = servings;
+        dish.likes = likes;
+        dish.thumbnail = thumbnail;
+        dishes.add(dish);
     }
     
 
