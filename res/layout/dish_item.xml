@@ -25,12 +25,39 @@
 
     <ImageView
         android:contentDescription="@string/desc"
-        android:id="@+id/photo"
+        android:id="@+id/dish_image"
         android:layout_width="wrap_content"
         android:layout_height="200sp"
         android:scaleType="fitXY" 
-        android:paddingBottom="5sp"
+        android:paddingBottom="0sp"
 	/>
+    
+    <RelativeLayout
+		android:layout_gravity="bottom"
+		android:background="#AA000000"
+		android:textColor="#ffffffff"
+		android:textSize="30sp"
+		android:layout_width="fill_parent"
+		android:layout_height="35sp"
+		android:paddingLeft="10sp"
+		android:paddingRight="10sp"
+		>
+    <TextView
+		android:layout_alignParentLeft="true" 
+        android:id="@+id/dish_overlay_name"
+		android:layout_width="wrap_content" 
+		android:layout_height="fill_parent"  
+    />
+
+
+    <TextView
+        android:layout_alignParentRight="true" 
+        android:id="@+id/dish_overlay_price"
+		android:layout_width="wrap_content" 
+		android:layout_height="fill_parent" 
+    />
+    
+    </RelativeLayout>
 
 </FrameLayout>	
 

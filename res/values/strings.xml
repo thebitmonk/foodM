@@ -27,7 +27,7 @@
     <!-- Photo info -->
     <string name="dish_price">Price  //</string>
     <string name="dish_flavour">Flavour  //</string>
-    <string name="dish_serving">Serving  //</string>
+    <string name="dish_servings">Serving  //</string>
     <string name="dish_ingredients">Ingredients  //</string>
     <string name="desc">image</string>
     <string name="_storage_sdcard0_data_tac_images_1165949943">/storage/sdcard0/data/tac/images/1165949943</string>

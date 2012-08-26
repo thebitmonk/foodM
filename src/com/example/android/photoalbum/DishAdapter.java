@@ -18,11 +18,13 @@
 package com.example.android.photoalbum;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -31,25 +33,27 @@ import java.util.List;
 /**
  * List adapter used to display the content of the photo album to the user.
  */
-class AlbumAdapter extends BaseAdapter {
-    private final List<Photo> mPhotos;
+class DishAdapter extends BaseAdapter {
+    private final List<Dish> mDishes;
     private LayoutInflater mInflater;
+    private Context mContext;
     ImageDownloader downloader;
     
-    AlbumAdapter(Context context, List<Photo> photos) {
+    DishAdapter(Context context, List<Dish>dishes) {
+    	mContext = context;
         mInflater = LayoutInflater.from(context);
-        mPhotos = photos;
+        mDishes = dishes;
         downloader = new ImageDownloader();
     }
 
     @Override
     public int getCount() {
-        return mPhotos.size();
+        return mDishes.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mPhotos.get(position);
+        return mDishes.get(position);
     }
 
     @Override
@@ -67,21 +71,30 @@ class AlbumAdapter extends BaseAdapter {
             view = convertView;
         }
 
-        Photo photo = mPhotos.get(position);
+        Photo photo = mDishes.get(position);
         // This will be fast, no need to bother with a ViewHolder
         ((ImageView) view.findViewById(R.id.photo)).setImageDrawable(photo.thumbnail);
 
         return view;
         **/
-    	Photo photo = mPhotos.get(position);
-		String url = photo.thumbnail;
+    	Dish dish = mDishes.get(position);
+		String url = dish.thumbnail;
 		
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.photo_item, null);
+            convertView = mInflater.inflate(R.layout.dish_item, null);
         }
         
-        ImageView image = (ImageView)convertView.findViewById(R.id.photo);
-        downloader.download(url, image);
-        return convertView;   	
+        ImageView dish_image = (ImageView)convertView.findViewById(R.id.dish_image);
+        TextView dish_overlay_name = (TextView)convertView.findViewById(R.id.dish_overlay_name);
+        TextView dish_overlay_price = (TextView)convertView.findViewById(R.id.dish_overlay_price);
+        
+        Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/FIVE.OTF");
+        dish_overlay_name.setTypeface(tf);
+        dish_overlay_price.setTypeface(tf);
+        
+        dish_overlay_name.setText(dish.name);
+        dish_overlay_price.setText(dish.price);
+        downloader.download(url, dish_image);
+        return convertView; 
     }
 }
