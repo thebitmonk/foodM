@@ -42,7 +42,7 @@ import java.util.List;
 
 public class AlbumActivity extends Activity {
     private ViewGroup mStack;
-    private List<Photo> mPhotos;
+    private List<Dish> mPhotos;
     private List<App> mApps;
     private View mPanel;
     private boolean mPanelVisible = true;
@@ -54,7 +54,7 @@ public class AlbumActivity extends Activity {
     private View mPhotoInfo;
     private ListView global_visible_view;
     private ImageDownloader mbitCache;
-    private AlbumAdapter mAdap;
+    private DishAdapter mAdap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +66,9 @@ public class AlbumActivity extends Activity {
         mPanel = findViewById(R.id.panel);
 
         // A real application should do this on a background thread
-        mPhotos = new AlbumLoader(this).loadPhotos();
-        mApps = new AlbumLoader(this).loadApps();
-        mAdap = new AlbumAdapter(this, mPhotos);
+        mPhotos = new FoodLoader(this).loadPhotos();
+        mApps = new FoodLoader(this).loadApps();
+        mAdap = new DishAdapter(this, mPhotos);
         setupDeck();
         setupAlbumList();
         setupStack();
@@ -99,9 +99,9 @@ public class AlbumActivity extends Activity {
      * 
      * @return The generated PhotoView used to display the specified photo
      */
-    private PhotoView addPhotoInStack(Photo photo, Bitmap bitmap) {
+    private PhotoView addPhotoInStack(Dish dish, Bitmap bitmap) {
         PhotoView view = new PhotoView(this, bitmap);
-        bindPhotoInfo(photo);
+        bindDishInfo(dish);
         mStack.addView(view, createStackLayoutParams());
         return view;
     }
@@ -111,11 +111,11 @@ public class AlbumActivity extends Activity {
      * 
      * @param photo The photo object to bind to the UI
      */
-    private void bindPhotoInfo(Photo photo) {
-        setText(R.id.dish_price, photo.title);
-        setText(R.id.dish_flavour, photo.date);
-        setText(R.id.dish_serving, photo.description);
-        setText(R.id.dish_ingredients, photo.channel);
+    private void bindDishInfo(Dish dish) {
+        setText(R.id.dish_price, dish.price);
+        setText(R.id.dish_flavour, dish.flavour);
+        setText(R.id.dish_servings, dish.servings);
+        setText(R.id.dish_ingredients, dish.ingredients);
     }
 
     private void setText(int id, String value) {
@@ -129,9 +129,9 @@ public class AlbumActivity extends Activity {
     /**
      * Adds the specified photo in the stack with animations.
      */
-    private void addFullPhoto(Photo photo) {
+    private void addFullPhoto(Dish dish) {
         final View stackTop = mStack.getChildAt(mStack.getChildCount() - 1);
-        new PhotoSwap(photo, stackTop).executeOnExecutor(AsyncTask.SERIAL_EXECUTOR);
+        new PhotoSwap(dish, stackTop).executeOnExecutor(AsyncTask.SERIAL_EXECUTOR);
     }
 
     /**
@@ -139,36 +139,33 @@ public class AlbumActivity extends Activity {
      * After the bitmap is loaded, it is added to the photos stack.
      */
     private class PhotoSwap extends AsyncTask<Void, Void, Bitmap> {
-        private final Photo mPhoto;
+        private final Dish mDish;
         private final View mStackTop;
 
         private Drawable mMarker;
 
-        PhotoSwap(Photo photo, View stackTop) {
-            mPhoto = photo;
+        PhotoSwap(Dish dish, View stackTop) {
+            mDish = dish;
             mStackTop = stackTop;
         }
         
         @Override
         protected Bitmap doInBackground(Void... params) {
             //Bitmap bitmap = mCache.get(mPhoto.photoResource);
-        	String url = mPhoto.thumbnail;
+        	String url = mDish.thumbnail;
         	String filename = String.valueOf(url.hashCode());
-        	ImageView image = (ImageView)findViewById(R.id.photo);
+        	ImageView image = (ImageView)findViewById(R.id.dish_image);
         	File f = new File(mAdap.downloader.getCacheDirectory(image.getContext()), filename);
         	//String s = "/storage/sdcard0/data/tac/images/1165949943";
             Bitmap temp_bitmap = (Bitmap)mAdap.downloader.imageCache.get(f.getPath());
             Bitmap bitmap = temp_bitmap.createScaledBitmap(temp_bitmap, 1280, 752, true);
-            if (bitmap == null) {
-                bitmap = BitmapFactory.decodeResource(getResources(), mPhoto.photoResource);
-            }
             return bitmap;
 
         }
 
         @Override
         protected void onPostExecute(Bitmap bitmap) {
-            final PhotoView newStackTop = addPhotoInStack(mPhoto, bitmap);
+            final PhotoView newStackTop = addPhotoInStack(mDish, bitmap);
             animateIn(newStackTop);
         }
     } 
@@ -263,18 +260,18 @@ public class AlbumActivity extends Activity {
         ((TextView) findViewById(R.id.dish_flavour_text)).setTypeface(tf);
         ((TextView) findViewById(R.id.dish_ingredients_text)).setTypeface(tf);
         ((TextView) findViewById(R.id.dish_price_text)).setTypeface(tf);
-        ((TextView) findViewById(R.id.dish_serving_text)).setTypeface(tf);
+        ((TextView) findViewById(R.id.dish_servings_text)).setTypeface(tf);
         ((TextView) findViewById(R.id.dish_flavour)).setTypeface(tf);
         ((TextView) findViewById(R.id.dish_ingredients)).setTypeface(tf);
         ((TextView) findViewById(R.id.dish_price)).setTypeface(tf);
-        ((TextView) findViewById(R.id.dish_serving)).setTypeface(tf);
+        ((TextView) findViewById(R.id.dish_servings)).setTypeface(tf);
         
         list.setAdapter(mAdap);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				Photo selected_photo = mPhotos.get(position);
-                addFullPhoto((Photo) selected_photo);
+				Dish selected_dish = mPhotos.get(position);
+                addFullPhoto((Dish) selected_dish);
 				if(mphoto_info.getVisibility() == View.INVISIBLE){
 					mphoto_info.setVisibility(View.VISIBLE);
                 }
