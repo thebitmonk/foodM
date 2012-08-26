@@ -18,34 +18,40 @@
 package com.example.android.photoalbum;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.List;
 
 /**
  * List adapter used to display the content of the photo album to the user.
  */
-class AppAdapter extends BaseAdapter {
-    private final List<App> mApps;
+class DishCategoryAdapter extends BaseAdapter {
+    private final List<DishCategory> mDishCategories;
     private LayoutInflater mInflater;
-
-    AppAdapter(Context context, List<App> apps) {
+    private Context mContext; 
+    ImageDownloader downloader;
+    
+    DishCategoryAdapter(Context context, List<DishCategory> dishCategories) {
         mInflater = LayoutInflater.from(context);
-        mApps = apps;
+        mContext = context;
+        mDishCategories = dishCategories;
+        downloader = new ImageDownloader();
     }
 
     @Override
     public int getCount() {
-        return mApps.size();
+        return mDishCategories.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mApps.get(position);
+        return mDishCategories.get(position);
     }
 
     @Override
@@ -55,17 +61,16 @@ class AppAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view;
-        if (convertView == null) {
-            view = mInflater.inflate(R.layout.app_item, parent, false);
-        } else {
-            view = convertView;
+    	DishCategory dishCategory = mDishCategories.get(position);
+		String url = dishCategory.thumbnail;
+		
+    	if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.dish_category_item, null);
         }
-
-        App app = mApps.get(position);
-        // This will be fast, no need to bother with a ViewHolder
-        ((ImageView) view.findViewById(R.id.app)).setImageDrawable(app.thumbnail);
-
-        return view;
+        
+        ImageView dish_category_image = (ImageView)convertView.findViewById(R.id.dish_category_image);        
+        
+        downloader.download(url, dish_category_image);
+        return convertView;
     }
 }

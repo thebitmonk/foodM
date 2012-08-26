@@ -34,7 +34,7 @@ class FoodLoader {
         mContext = context;
     }
 
-    List<Dish> loadPhotos() {
+    List<Dish> loadDishes() {
         ArrayList<Dish> dishes = new ArrayList<Dish>();
         addDish(dishes, "Paneer Pasanda", "Rs 500", "main course","tomato cheese", "mild spicy", "1 for 3", "111","http://farm7.staticflickr.com/6154/6144736141_ea63efa403_z.jpg");
         addDish(dishes, "Veg Hariyali", "Rs 250", "main course", "mushroom broccoli pepper", "normal", "1 for 3","123","http://farm4.staticflickr.com/3295/2968102780_7ca4f9bec7_z.jpg?zz=1");
@@ -58,34 +58,23 @@ class FoodLoader {
     }
     
 
-    List<App> loadApps() {
-        ArrayList<App> apps = new ArrayList<App>();
-        addApp(apps, "Snap", "Canon 5D Mk II", "1/200", "8", "200", "1000",
-                R.drawable.photo_9, R.drawable.starters1, 37719218, -121657233);
-        addApp(apps, "Snap", "Canon 5D Mk II", "1/200", "8", "200", "1000",
-                R.drawable.photo_9, R.drawable.main_course1, 37719218, -121657233);
-        addApp(apps, "Facebook", "Canon 5D Mk II", "1/100", "4", "98", "2000",
-                R.drawable.photo_10, R.drawable.drinks, 37322683, -122210696);
-        addApp(apps, "History", "Canon 5D Mk II", "1/100", "4", "98", "2000",
-                R.drawable.photo_10, R.drawable.special, 37322683, -122210696);
-        return apps;
+    List<DishCategory> loadDishCategories() {
+        ArrayList<DishCategory> dishCategories = new ArrayList<DishCategory>();
+        addDishCategory(dishCategories, "Starters", " the most munching set of dishes :)", "13", "http://192.168.1.27:8000/starters.png");
+        addDishCategory(dishCategories, "Main Course", " the paunch craves for it :)", "115", "http://192.168.1.27:8000/main_course.png");
+        addDishCategory(dishCategories, "Drinks", " liquid that oozles ...", "60", "http://192.168.1.27:8000/drinks.png");
+        addDishCategory(dishCategories, "Desserts", " the ending the awesome day deserves", "33", "http://192.168.1.27:8000/special.png");
+        return dishCategories;
     }    
     
 
-    private void addApp(ArrayList<App> apps, String name, String camera, String exposure,
-            String aperture, String focal, String iso, int resource, int resourceSmall,
-            int latitude, int longitude) {
-        App app = new App();
-        app.name = name;
-        app.camera = camera;
-        app.exposure = exposure;
-        app.aperture = aperture;
-        app.focal = focal;
-        app.iso = iso;
-        app.photoResource = resource;
-        app.thumbnail = mContext.getResources().getDrawable(resourceSmall);
-        app.latitude = latitude;
-        app.longitude = longitude;
-        apps.add(app);
+    private void addDishCategory(ArrayList<DishCategory> dishCategories, String name, String description, 
+    	String number_of_dishes, String thumbnail) {
+        DishCategory dishCategory = new DishCategory();
+        dishCategory.name = name;
+        dishCategory.description = description;
+        dishCategory.number_of_dishes = number_of_dishes;
+        dishCategory.thumbnail = thumbnail;
+        dishCategories.add(dishCategory);
     }    
 }

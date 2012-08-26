@@ -23,15 +23,9 @@ import android.graphics.drawable.Drawable;
  * properties. It also stores the photo thumbnail to be displayed
  * in the album list.
  */
-class App {
+class DishCategory {
     String name;
-    String camera;
-    String exposure;
-    String aperture;
-    String focal;
-    String iso;
-    int photoResource;
-    Drawable thumbnail;
-    int latitude;
-    int longitude;
+    String description;
+    String number_of_dishes;
+    String thumbnail;
 }

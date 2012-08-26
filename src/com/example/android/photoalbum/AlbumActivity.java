@@ -42,19 +42,20 @@ import java.util.List;
 
 public class AlbumActivity extends Activity {
     private ViewGroup mStack;
-    private List<Dish> mPhotos;
-    private List<App> mApps;
+    private List<Dish> mDishes;
+    private List<DishCategory> mDishCategories;
     private View mPanel;
     private boolean mPanelVisible = true;
     private ObjectAnimator mPanelAnimator;
-    private ListView list;
+    private ListView dishList;
     private LinearLayout mphoto_info;
     private ImageView mToggleButton;
-    private ListView app_list;
+    private ListView dishCategoryList;
     private View mPhotoInfo;
     private ListView global_visible_view;
     private ImageDownloader mbitCache;
-    private DishAdapter mAdap;
+    private DishAdapter mDishAdap;
+    private DishCategoryAdapter mDishCategoryAdap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +67,10 @@ public class AlbumActivity extends Activity {
         mPanel = findViewById(R.id.panel);
 
         // A real application should do this on a background thread
-        mPhotos = new FoodLoader(this).loadPhotos();
-        mApps = new FoodLoader(this).loadApps();
-        mAdap = new DishAdapter(this, mPhotos);
+        mDishes = new FoodLoader(this).loadDishes();
+        mDishCategories = new FoodLoader(this).loadDishCategories();
+        mDishAdap = new DishAdapter(this, mDishes);
+        mDishCategoryAdap = new DishCategoryAdapter(this, mDishCategories);
         setupDeck();
         setupAlbumList();
         setupStack();
@@ -155,9 +157,9 @@ public class AlbumActivity extends Activity {
         	String url = mDish.thumbnail;
         	String filename = String.valueOf(url.hashCode());
         	ImageView image = (ImageView)findViewById(R.id.dish_image);
-        	File f = new File(mAdap.downloader.getCacheDirectory(image.getContext()), filename);
+        	File f = new File(mDishAdap.downloader.getCacheDirectory(image.getContext()), filename);
         	//String s = "/storage/sdcard0/data/tac/images/1165949943";
-            Bitmap temp_bitmap = (Bitmap)mAdap.downloader.imageCache.get(f.getPath());
+            Bitmap temp_bitmap = (Bitmap)mDishAdap.downloader.imageCache.get(f.getPath());
             Bitmap bitmap = temp_bitmap.createScaledBitmap(temp_bitmap, 1280, 752, true);
             return bitmap;
 
@@ -249,9 +251,9 @@ public class AlbumActivity extends Activity {
      * listener for instance.)
      */
     private void setupAlbumList() {
-        list = (ListView) findViewById(R.id.album_list);
+        dishList = (ListView) findViewById(R.id.album_list);
         mToggleButton = (ImageView) findViewById(R.id.up);
-        app_list = (ListView) findViewById(R.id.app_list);
+        dishCategoryList = (ListView) findViewById(R.id.app_list);
         mphoto_info = (LinearLayout)findViewById(R.id.photo_info);
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/JUMPS__.TTF");
 
@@ -266,11 +268,11 @@ public class AlbumActivity extends Activity {
         ((TextView) findViewById(R.id.dish_price)).setTypeface(tf);
         ((TextView) findViewById(R.id.dish_servings)).setTypeface(tf);
         
-        list.setAdapter(mAdap);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        dishList.setAdapter(mDishAdap);
+        dishList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				Dish selected_dish = mPhotos.get(position);
+				Dish selected_dish = mDishes.get(position);
                 addFullPhoto((Dish) selected_dish);
 				if(mphoto_info.getVisibility() == View.INVISIBLE){
 					mphoto_info.setVisibility(View.VISIBLE);
@@ -285,8 +287,8 @@ public class AlbumActivity extends Activity {
             }
         });
 
-        app_list.setAdapter(new AppAdapter(this, mApps));
-        app_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        dishCategoryList.setAdapter(new DishCategoryAdapter(this, mDishCategories));
+        dishCategoryList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				transitionScreens();
@@ -299,18 +301,18 @@ public class AlbumActivity extends Activity {
     }
 
     private void transitionScreens(){
-        if(list.getVisibility() == View.VISIBLE)
+        if(dishList.getVisibility() == View.VISIBLE)
         {
 			//list.setVisibility(View.INVISIBLE);
-			app_list.setVisibility(View.VISIBLE);
-			appAnimateIn(list, app_list);
+			dishCategoryList.setVisibility(View.VISIBLE);
+			appAnimateIn(dishList, dishCategoryList);
 			return;
         }
-        if(app_list.getVisibility() == View.VISIBLE)
+        if(dishCategoryList.getVisibility() == View.VISIBLE)
         {
 			//app_list.setVisibility(View.INVISIBLE);
-			list.setVisibility(View.VISIBLE);
-			appAnimateIn(app_list, list);
+        	dishList.setVisibility(View.VISIBLE);
+			appAnimateIn(dishCategoryList, dishList);
 			return;
         }
     }
