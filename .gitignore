@@ -1,0 +1,23 @@
+# OS X
+.DS_Store
+
+# Python
+*.pyc
+
+# Django Settings file
+settings.py
+
+# Development database
+*.db
+
+# Eclipse/Aptana
+.settings
+
+# Emacs
+*~
+
+#log files
+*.log
+
+#bin folder
+bin/
