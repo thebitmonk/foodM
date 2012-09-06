@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2011 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+        
+    
+   <FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:p="http://schemas.android.com/apk/res/com.example.android.photoalbum"        
+        android:id="@+id/feedback"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:background="@drawable/feed"
+        android:focusable="true"
+		android:focusableInTouchMode="true"        
+        >
+	
+       <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:layout_width="370sp"
+		    android:layout_height="fill_parent"
+		    android:paddingLeft="48dp"
+		    android:paddingRight="16dp" >
+       
+			<SeekBar android:id="@+id/overall_feedback"
+			android:layout_width="250sp"
+			android:layout_weight="1"
+			android:layout_height="40sp"
+			android:layout_marginTop="110sp"
+			android:max="100"
+			  />
+			
+			<SeekBar android:id="@+id/food_feedback"
+			android:layout_width="250sp"
+			android:layout_weight="1"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="60sp"
+			android:layout_below="@+id/overall_feedback"
+			android:max="100"
+			 />
+
+			<SeekBar android:id="@+id/service_feedback"
+			android:layout_width="250sp"
+			android:layout_weight="1"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/food_feedback"
+			android:layout_marginTop="62sp"
+			android:max="100"
+			 />
+
+			<SeekBar android:id="@+id/atmosphere_feedback"
+			    android:layout_below="@+id/service_feedback"
+			    android:layout_weight="1"
+			android:layout_width="250sp"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="67sp"
+			android:max="100"
+			 />
+       
+		</RelativeLayout>
+		<FrameLayout
+		android:layout_marginLeft="470sp"
+        android:layout_width="400sp"
+        android:layout_height="160sp"
+        android:layout_marginTop="180sp"		    
+		>
+			<EditText
+			        android:id="@+id/editTextSimple"
+			        android:layout_height="match_parent"
+			        android:layout_width="match_parent"			        
+			        >
+			</EditText>		    	
+        </FrameLayout>
+</FrameLayout>
+   

@@ -39,6 +39,28 @@
         </activity>
         
         <activity
+            android:icon="@mipmap/ic_launcher_gallery"
+            android:name="CalendarActivity"
+            android:theme="@style/Theme.Fullscreen"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:icon="@mipmap/ic_launcher_gallery"
+            android:name="FeedbackActivity"
+            android:theme="@style/Theme.Fullscreen"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>        
+        
+        <activity
             android:icon="@mipmap/ic_launcher_gallery"                
             android:name="AlbumActivity"
             android:theme="@style/Theme.Fullscreen"

@@ -23,14 +23,11 @@
     android:paddingRight="10sp"
     >
 
-    <ImageView
-        android:contentDescription="@string/desc"
-        android:id="@+id/dish_category_image"
-        android:layout_width="fill_parent"
-        android:layout_height="200sp"
-        android:scaleType="fitXY"
-        android:paddingBottom="5sp"
-	/>
-    
+    <TextView 
+        android:id="@+id/event_overlay_day"
+		android:layout_width="wrap_content" 
+		android:layout_height="fill_parent"  
+    />
+
 </FrameLayout>	
 

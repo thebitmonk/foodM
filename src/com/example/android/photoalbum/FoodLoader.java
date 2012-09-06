@@ -60,10 +60,10 @@ class FoodLoader {
 
     List<DishCategory> loadDishCategories() {
         ArrayList<DishCategory> dishCategories = new ArrayList<DishCategory>();
-        addDishCategory(dishCategories, "Starters", " the most munching set of dishes :)", "13", "http://192.168.1.27:8000/starters.png");
-        addDishCategory(dishCategories, "Main Course", " the paunch craves for it :)", "115", "http://192.168.1.27:8000/main_course.png");
-        addDishCategory(dishCategories, "Drinks", " liquid that oozles ...", "60", "http://192.168.1.27:8000/drinks.png");
-        addDishCategory(dishCategories, "Desserts", " the ending the awesome day deserves", "33", "http://192.168.1.27:8000/special.png");
+        addDishCategory(dishCategories, "Starters", " the most munching set of dishes :)", "13", "http://192.168.1.103:8000/main_course1.png");
+        addDishCategory(dishCategories, "Main Course", " the paunch craves for it :)", "115", "http://192.168.1.103:8000/starters1.png");
+        addDishCategory(dishCategories, "Drinks", " liquid that oozles ...", "60", "http://farm7.staticflickr.com/6154/6144736141_ea63efa403_z.jpg");
+        addDishCategory(dishCategories, "Desserts", " the ending the awesome day deserves", "33", "http://farm4.staticflickr.com/3295/2968102780_7ca4f9bec7_z.jpg?zz=1");
         return dishCategories;
     }    
     

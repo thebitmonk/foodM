@@ -24,6 +24,8 @@ public class StartActivity extends Activity {
 		final Context context = this;
  
 		ImageView menu = (ImageView) findViewById(R.id.startMenu);
+		ImageView event = (ImageView) findViewById(R.id.startEvent);
+		ImageView feedback = (ImageView) findViewById(R.id.startFeedback);
 		
 		menu.setOnClickListener(new OnClickListener() {
 			@Override
@@ -33,6 +35,24 @@ public class StartActivity extends Activity {
  
 			}
 		});
+		
+		event.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+			    Intent intent = new Intent(context, CalendarActivity.class);
+                            startActivity(intent);   
+ 
+			}
+		});
+		
+		feedback.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+			    Intent intent = new Intent(context, FeedbackActivity.class);
+                            startActivity(intent);   
+ 
+			}
+		});				
  
 	}
  

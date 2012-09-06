@@ -18,11 +18,6 @@ package com.example.android.photoalbum;
 
 import android.graphics.drawable.Drawable;
 
-/**
- * Contains all the information needed to display a photo and its
- * properties. It also stores the photo thumbnail to be displayed
- * in the album list.
- */
 class Dish {
     String name;
     String price;
