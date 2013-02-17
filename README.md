@@ -4,6 +4,8 @@ This is restaurant menu concept on which I was working. It was also my first for
 
 ![This is what it looks like.]
 (https://github.com/thebitmonk/foodM/blob/master/foodappscreenshots/device-2012-09-09-075710.png?raw=true)
+![This is what it looks like.]
+(https://github.com/thebitmonk/foodM/blob/master/foodappscreenshots/device-2012-09-09-075732.png?raw=true)
 ![This is the second screen.]
 (https://github.com/thebitmonk/foodM/blob/master/foodappscreenshots/device-2012-09-09-075812.png?raw=true)
 ![This is the third screen.]
